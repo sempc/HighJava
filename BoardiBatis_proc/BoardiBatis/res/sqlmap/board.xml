@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="board">
+	
+ <!-- 매핑정보 저장 후 대조 -->
+ 	<resultMap class="boardVO" id="boardMap">
+ 		<result property="boardNo" column="board_no"/>
+ 		<result property="boardTitle" column="board_title"/>
+ 		<result property="boardContent" column="board_content"/>
+ 		<result property="boardWriter" column="board_writer"/>
+ 		<result property="boardDate" column="board_date"/>
+ 	</resultMap>
+ 	
+ 	<!-- 중복성 검사 -->
+ 	<select id="getBoard" parameterClass="Integer" resultClass="int">
+		select count(*) cnt
+		from jdbc_board 
+		where board_no = #boardNo#
+	</select>
+	
+ 	<!-- insert부분 -->
+	<insert id="insertBoard" parameterClass="boardVO">
+		insert into jdbc_board(board_no, board_title, board_content, board_writer, board_date)
+		values(board_seq.nextVal,#boardTitle#,#boardContent#,#boardWriter#,SYSDATE) 
+	</insert>
+	
+	<!-- update부분 -->
+	<update id="updateBoard" parameterClass="boardVO">
+		update jdbc_board 
+		set board_no=#boardNo#, board_title=#boardTitle#, board_content=#boardContent#, board_writer=#boardWriter#, board_date=#boardDate#  
+		where board_no=#boardNo#
+	</update>
+	
+	<!-- delete부분 -->
+	<delete id="deleteBoard" parameterClass="Integer">
+		delete from jdbc_board
+		where board_no=#boardNo#
+	</delete>
+ 	
+ 	<!-- BoardAll부분 -->
+ 	<select id="getBoardAll" resultMap="boardMap">
+		select * 
+		from jdbc_board
+	</select>
+	
+	<!-- search부분 -->
+	<select id="getSearchBoard" parameterClass="boardVO" resultMap="boardMap">
+		select * 
+		from jdbc_board 
+		where 1=1 
+		<isNotEmpty property="boardTitle"> and board_title like '%' || #boardTitle# || '%' </isNotEmpty>
+		<isNotEmpty property="boardContent"> and board_content'%' || #boardContent# || '%' </isNotEmpty>
+		<isNotEmpty property="boardWriter"> and board_writer = #boardWriter# </isNotEmpty>
+	</select>
+	
+</sqlMap>
+
+
+
+
+
