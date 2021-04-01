@@ -22,7 +22,7 @@ public class RemoteClient {
 			// 1. 등록된 서버를 찾기 위해 Registry객체를 생성한 후
 			//    사용할 객체를 불러온다.
 			Registry reg = LocateRegistry
-					.getRegistry("192.168.43.132");
+					.getRegistry("192.168.43.132", 8888);
 			RemoteInterface clientInf = 
 					(RemoteInterface) reg.lookup("server");
 			
