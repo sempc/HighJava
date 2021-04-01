@@ -20,7 +20,7 @@ public class MultichatClient {
 		
 		try {
 			
-			socket = new Socket("192.168.43.132", 7777);
+			socket = new Socket("192.168.43.36", 7777);
 			
 			System.out.println("서버에 연결되었습니다.");
 			
