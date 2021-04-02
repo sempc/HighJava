@@ -26,7 +26,7 @@ public class JSONSimpleWriterTest {
 		
 		jsonObj.put("name", "홍길동");
 		jsonObj.put("job", "학생");
-		jsonObj.put("age", "30");
+		jsonObj.put("age", 30);
 		jsonObj.put("addr", "대전시 중구 대흥동 대덕인재개발원");
 		
 		// JSONArray 데이터 설정
