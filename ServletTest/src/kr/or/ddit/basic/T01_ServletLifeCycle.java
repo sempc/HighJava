@@ -36,6 +36,7 @@ public class T01_ServletLifeCycle
 			HttpServletResponse resp) throws ServletException, IOException {
 		// 메서드 방식이 get 인 경우 호출됨.
 		System.out.println("doGet() 호출됨.");
+		throw new ServletException("서블릿 예외 발생했어여!!");
 	}
 	
 	@Override
