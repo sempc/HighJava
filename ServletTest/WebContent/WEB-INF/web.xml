@@ -5,6 +5,7 @@
   <servlet>
   	<servlet-name>T01_ServletLifeCycle</servlet-name>
   	<servlet-class>kr.or.ddit.basic.T01_ServletLifeCycle</servlet-class>
+  	<load-on-startup>1</load-on-startup>
   </servlet>
   
   <servlet-mapping>
@@ -21,6 +22,23 @@
   	<servlet-name>T02_ServletTest</servlet-name>
   	<url-pattern>/T02_ServletTest</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>T03_ServletParameterTest</servlet-name>
+  	<servlet-class>kr.or.ddit.basic.T03_ServletParameterTest</servlet-class>
+  	
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>T03_ServletParameterTest</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
   
   
 </web-app>
