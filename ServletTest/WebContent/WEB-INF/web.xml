@@ -12,4 +12,15 @@
   	<url-pattern>/T01_ServletLifeCycle</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>T02_ServletTest</servlet-name>
+  	<servlet-class>kr.or.ddit.basic.T02_ServletTest</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>T02_ServletTest</servlet-name>
+  	<url-pattern>/T02_ServletTest</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
