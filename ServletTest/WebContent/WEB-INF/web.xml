@@ -56,6 +56,17 @@
   	<url-pattern>/ErrorHandler</url-pattern>
   </servlet-mapping>
   
+  
+  <servlet>
+  	<servlet-name>T06_ServletSessionTest</servlet-name>
+  	<servlet-class>kr.or.ddit.basic.T06_ServletSessionTest</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>T06_ServletSessionTest</servlet-name>
+  	<url-pattern>/T06_ServletSessionTest</url-pattern>
+  </servlet-mapping>
+  
   <error-page>
   	<exception-type>javax.servlet.ServletException</exception-type>
   	<location>/ErrorHandler</location>
