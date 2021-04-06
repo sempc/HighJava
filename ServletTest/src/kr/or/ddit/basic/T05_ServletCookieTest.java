@@ -3,6 +3,7 @@ package kr.or.ddit.basic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
@@ -38,13 +39,112 @@ public class T05_ServletCookieTest extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		setCookieExam(req, resp); // 쿠키 설정 예제
-		
+		//setCookieExam(req, resp); // 쿠키 설정 예제
+		//readCookieExam(req, resp); // 쿠키정보 읽기 예제
+		deleteCookieExam(req, resp); // 쿠키 삭제 예제
 		
 		
 	}
 	
 	
+	private void deleteCookieExam(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	/**
+	    사용중인 쿠키를 삭제하는 방법...
+	    
+	  1. 사용중인 쿠키정보를 이용하여 쿠키객체를 생성한다.
+	  2. 쿠키 객체의 최대지속시간을 0으로 설정한다.
+	  3. 설정한 쿠키객체를 응답헤더에 추가하여 전송한다.
+	  
+	*/
+		Cookie[] cookies = req.getCookies();
+		
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html");
+		
+		PrintWriter out = resp.getWriter();
+		
+		String title = "쿠키정보 삭제 예제";
+		
+		out.println("<html><head><title>"
+				+ title + "</title></head>"
+				+ "<body>");
+		if(cookies != null) {
+			out.println("<h2>" + title + "</h2>");
+			
+			for(Cookie cookie : cookies) {
+			  
+				if((cookie.getName()).equals("userId")) {
+					// 쿠키 제거하기
+					cookie.setMaxAge(0);
+					
+					resp.addCookie(cookie);
+					out.println("삭제한 쿠키 :"
+					+ cookie.getName() + "<br>");
+				}
+				out.print("쿠키 이름 : " 
+						+ cookie.getName() + ", " );
+				out.print("쿠키 값 : " 
+						+ URLDecoder
+				  .decode(cookie.getValue(), "utf-8")
+						+ "<br>");
+			}
+		}else {
+			out.println("<h2>쿠키 정보가 없습니다.</h2>");
+		}
+		out.println("</body></html>");
+	}
+
+
+	private void readCookieExam(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		
+		Cookie cookie = null;
+		// 현재 도메인에서 사용중인 쿠키정보 배열 가져오기
+		Cookie[] cookies = req.getCookies();
+		
+		// 응답헤더에 인코딩 및 Content-type 설정
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html");
+		
+		PrintWriter out = resp.getWriter();
+		
+		String title = "쿠키정보 읽기 예제";
+		
+		out.println("<html><head><title>"
+			+ title + "</title></head>"
+			+ "<body>"
+				);
+		if(cookies != null) {
+			out.println("<h2>" + title + "</h2>");
+			
+			for(int i=0; i < cookies.length; i++) {
+				cookie = cookies[i];
+				out.println("name : " 
+						+ cookie.getName() + "<br>");
+				out.println("value : "
+						+ URLDecoder
+						.decode(cookie.getValue(), "utf-8")
+						+ "<br>");
+				out.println("<hr>");
+			}
+		}else {
+			out.println("<h2>쿠키정보가 없습니다.</h2>");
+		}
+		out.println("</body>");
+		out.println("</html>");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	}
+
+
 	private void setCookieExam(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	/**
 	    쿠키 정보를 설정하는 방법...
