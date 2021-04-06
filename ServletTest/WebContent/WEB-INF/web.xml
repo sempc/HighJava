@@ -40,6 +40,17 @@
   	<servlet-class>kr.or.ddit.basic.T04_ErrorHandler</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>T05_ServletCookieTest</servlet-name>
+  	<servlet-class>kr.or.ddit.basic.T05_ServletCookieTest</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>T05_ServletCookieTest</servlet-name>
+  	<url-pattern>/T05_ServletCookieTest</url-pattern>
+  </servlet-mapping>
+  
+  
   <servlet-mapping>
   	<servlet-name>ErrorHandler</servlet-name>
   	<url-pattern>/ErrorHandler</url-pattern>

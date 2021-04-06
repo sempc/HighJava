@@ -1,11 +1,17 @@
 package kr.or.ddit.basic;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 public class T05_ServletCookieTest extends HttpServlet {
 /**
@@ -32,11 +38,83 @@ public class T05_ServletCookieTest extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		setCookieExam(req, resp); // 쿠키 설정 예제
 		
 		
 		
 	}
 	
+	
+	private void setCookieExam(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	/**
+	    쿠키 정보를 설정하는 방법...
+	    
+	   1. 쿠키객체를 생성한다. 사용불가 문자(공백, []()=,"/?@:;)
+	      Cookie cookie = new Cookie("키값", "value값");
+	   => 이외의 값(예를 들면 한글)을 사용시에는 URLEncoder.encode()
+	           사용하여 인코딩 처리를 해준다.
+	           
+	   2. 쿠키 최대 지속시간을 설정한다.(초단위)
+	   => 지정하지 않으면 웹브라우저를 종료할때 쿠키를 함께 삭제한다.
+	   cookie.setMaxAge(60 * 60 * 24); // 24시간
+	   
+	   3. 응답헤더에 쿠키 객체를 추가한다.
+	   response.addCookie(cookie);
+	   
+	  => 출력버퍼가 플러시된 이후에는 쿠키를 추가할 수 없다.
+	  (응답헤더를 통해서 웹브라우저에 전달하기 때문에...)
+	*/
+		// 쿠키 생성하기
+		Cookie userId = new Cookie(
+				"userId", req.getParameter("userId"));
+		// 쿠키값에 한글을 사용시 인코딩 처리를 해준다.
+		Cookie name = new Cookie(
+			"name", URLEncoder
+			.encode(req.getParameter("name"), "utf-8"));
+		
+		// 쿠키 소멸시간 설정(초단위) => 지정하지 않으면 웹브라우저를 
+		// 종료할때 쿠키를 함계 삭제한다.
+		userId.setMaxAge(60 * 60 * 24); // 1일
+		name.setMaxAge(60 * 60 * 48); 	// 2일
+		
+		// 쿠키 추가하기
+		resp.addCookie(userId);
+		resp.addCookie(name);
+		
+		// 응답헤더에 인코딩 및 content-type설정
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html");
+		
+		PrintWriter out = resp.getWriter();
+		
+		String title = "쿠키설정 예제";
+		
+		out.println("<html><head><title>" 
+				+ title + "</title></head>");
+		out.println("<body>"
+			+ "<h1 align=\"center\">" + title + "</h1>"
+			+ "<ul>"
+			+ "<li><b>ID</b>: "
+			+ req.getParameter("userId") 
+			+ "</li>"
+			+ "<li><b>이름</b>: "
+			+ req.getParameter("name")
+			+ "</li>"
+			+ "</ul></body></html>"
+		);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
