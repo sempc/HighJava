@@ -94,6 +94,23 @@
   	<url-pattern>/T10_SessionListenerTest</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>T11_ImageServletTest</servlet-name>
+  	<servlet-class>kr.or.ddit.basic.T11_ImageServletTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>T11_ImageServletTest</servlet-name>
+  	<url-pattern>/T11_ImageServletTest</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>T12_DownloadServletTest</servlet-name>
+  	<servlet-class>kr.or.ddit.basic.T12_DownloadServletTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>T12_DownloadServletTest</servlet-name>
+  	<url-pattern>/T12_DownloadServletTest</url-pattern>
+  </servlet-mapping>
   
   <listener>
   	<display-name>MyServletContextListener</display-name>
