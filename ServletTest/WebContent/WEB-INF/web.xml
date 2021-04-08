@@ -112,6 +112,15 @@
   	<url-pattern>/T12_DownloadServletTest</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>UploadServlet1</servlet-name>
+  	<servlet-class>kr.or.ddit.upload.UploadServlet1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UploadServlet1</servlet-name>
+  	<url-pattern>/upload1</url-pattern>
+  </servlet-mapping>
+  
   <listener>
   	<display-name>MyServletContextListener</display-name>
   	<listener-class>kr.or.ddit.basic.MyServletContextListener</listener-class>

@@ -16,7 +16,7 @@ public class T12_DownloadServletTest extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String filename = "aaa.jpg";
+		String filename = "aaa555555.jpg";
 		
 		// 파일 다운로드 처리를 위한 응답헤더 정보 설정하기
 		resp.setContentType("application/octet-stream");
