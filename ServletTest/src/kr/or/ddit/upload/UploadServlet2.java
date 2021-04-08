@@ -47,6 +47,8 @@ public class UploadServlet2 extends HttpServlet {
 			factory.setRepository(
 					new File(
 					System.getProperty("java.io.tmpdir")));
+			System.out.println("임시경로 : " 
+					+ System.getProperty("java.io.tmpdir"));
 			
 			ServletFileUpload upload = 
 					new ServletFileUpload(factory);
