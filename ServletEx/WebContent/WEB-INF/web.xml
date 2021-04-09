@@ -8,7 +8,16 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SelectMemberAllServlet</servlet-name>
-		<url-pattern>/member/selectAll.do</url-pattern>
+		<url-pattern>/member/list.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InsertMemberServlet</servlet-name>
+		<servlet-class>kr.or.ddit.member.controller.InsertMemberServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertMemberServlet</servlet-name>
+		<url-pattern>/member/insert.do</url-pattern>
 	</servlet-mapping>
 	
 	
