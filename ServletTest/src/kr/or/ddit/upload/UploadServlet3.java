@@ -37,10 +37,14 @@ public class UploadServlet3 extends HttpServlet {
  		Content-Disposition : form-data; name="fieldName"; filename="filename.jpg"
 	*/
 		for(String content : 
-			part.getHeader("Content-Disposition").split(";")) {
+			part.getHeader("content-disposition").split(";")) {
 			
-			return content.substring(content.indexOf("=")+1)
+			String result = content.substring(content.indexOf("=")+1)
 					.trim().replace("\"", "");
+			System.out.println("result : " + result);
+			return result;
+			
+			
 		}
 		
 		return null;
