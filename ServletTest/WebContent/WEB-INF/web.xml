@@ -129,7 +129,8 @@
   	<servlet-name>UploadServlet2</servlet-name>
   	<url-pattern>/upload2</url-pattern>
   </servlet-mapping>
-  
+ 
+ <!-- 
   <listener>
   	<display-name>MyServletContextListener</display-name>
   	<listener-class>kr.or.ddit.basic.MyServletContextListener</listener-class>
@@ -145,7 +146,7 @@
   	<listener-class>kr.or.ddit.basic.MySessionAttributeListener</listener-class>
   </listener>
   
-  
+   --> 
   
   <filter>
   	<filter-name>CustomEncoding</filter-name>
