@@ -42,6 +42,8 @@ public class UploadServlet3 extends HttpServlet {
 			String result = content.substring(content.indexOf("=")+1)
 					.trim().replace("\"", "");
 			System.out.println("result : " + result);
+			if(!result.startsWith("filename")) continue;
+			
 			return result;
 			
 			
