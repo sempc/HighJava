@@ -1,10 +1,14 @@
 package kr.or.ddit.comm.controller;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,13 +33,54 @@ public class WebController extends HttpServlet {
 	private Map<String, CommandHandler> cmmHandlerMap
 		= new HashMap<>(); 
 	
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		
+		String configFilePath = 
+				config.getInitParameter("handler-config");
+		
+		Properties handlerProp = new Properties();
+		
+		// 설정파일을 읽어서 대응되는 핸들러객체를 생성하여 맵에 등록하기
+		String configFileRealPath = 
+				config.getServletContext()
+						.getRealPath(configFilePath);
+		
+		FileReader fr;
+		
+		try {
+			fr = new FileReader(configFileRealPath);
+			handlerProp.load(fr);
+			
+		}catch(IOException ex) {
+			ex.printStackTrace();
+		}
+		
+		for(Object key : handlerProp.keySet()) {
+			String command = (String) key;
+			
+			try {
+				Class<?> klass = Class
+						.forName(handlerProp
+								.getProperty(command));
+				CommandHandler handler = 
+						(CommandHandler) klass.newInstance();
+				// 핸들러 객체 등록
+				cmmHandlerMap.put(command, handler);
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				throw new ServletException();
+			}
+		}
+		
+		Set<Map.Entry<String, CommandHandler>> entrySet
+			= cmmHandlerMap.entrySet();
+		for(Map.Entry<String, CommandHandler> entry 
+				: entrySet) {
+			LOGGER.info(entry.getKey() 
+					+ " => " + entry.getValue());
+		}
+	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

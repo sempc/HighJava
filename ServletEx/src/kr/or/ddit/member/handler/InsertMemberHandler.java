@@ -1,4 +1,4 @@
-package kr.or.ddit.member.controller;
+package kr.or.ddit.member.handler;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
