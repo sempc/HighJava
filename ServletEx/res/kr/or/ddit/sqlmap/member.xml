@@ -94,7 +94,10 @@
 	 </isNotEmpty>
 	
 	</select>
-
+	
+	<select id="getMemberInfo" resultMap="memMap">
+		select * from mymember where mem_id = #memId#
+	</select>
 
 </sqlMap>			
 
