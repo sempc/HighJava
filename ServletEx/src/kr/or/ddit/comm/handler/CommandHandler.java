@@ -20,10 +20,6 @@ public interface CommandHandler {
 	 * @return 뷰페이지 정보
 	 */
 	public String process(HttpServletRequest req, 
-			HttpServletResponse resp);
-	
-	
-	
-	
-	
+			HttpServletResponse resp) throws Exception
+	;
 }
