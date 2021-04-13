@@ -39,14 +39,11 @@ public class UploadServlet3 extends HttpServlet {
 		for(String content : 
 			part.getHeader("content-disposition").split(";")) {
 			
-			String result = content.substring(content.indexOf("=")+1)
-					.trim().replace("\"", "");
-			System.out.println("result : " + result);
-			if(!result.startsWith("filename")) continue;
-			
-			return result;
-			
-			
+			if(content.trim().startsWith("filename")) {
+				String result = content.substring(content.indexOf("=")+1)
+						.trim().replace("\"", "");
+				return result;
+			}
 		}
 		
 		return null;
