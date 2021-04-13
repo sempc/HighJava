@@ -26,8 +26,8 @@ public class FileUploadRequestWrapper extends HttpServletRequestWrapper {
     	= "d:/D_Other/upload_files";	// 업로드 경로 설정
     private boolean multipart = false;													// 멀티파트여부
 
-    private Map<String, String[]> parameterMap;											// 폼필드(파라미터) 데이터를 담기 위한 맵
-    private Map<String, Object> fileItemMap;											// fileItem객체를 담기위한 맵
+    private Map<String, String[]> parameterMap;	// 폼필드(파라미터) 데이터를 담기 위한 맵
+    private Map<String, Object> fileItemMap;	// fileItem객체를 담기위한 맵
 
     /**
      * 생성자

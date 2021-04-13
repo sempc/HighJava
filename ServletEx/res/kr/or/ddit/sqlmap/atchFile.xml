@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="atchFile">
+	<resultMap class="kr.or.ddit.member.vo.AtchFileVO" 
+				id="atchFileDetailMap">
+	
+	<result property="atchFileId      " column="" />
+	<result property="fileSn          " column="" />
+	<result property="fileStreCours   " column="" />
+	<result property="streFileNm      " column="" />
+	<result property="orignlFileNm    " column="" />
+	<result property="fileExtsn       " column="" />
+	<result property="fileCn          " column="" />
+	<result property="fileSize        " column="" />
+	
+	
+	
+	
+	
+		
+	
+	</resultMap>
+
+
+</sqlMap>			
+
+
+
+
+
