@@ -62,8 +62,8 @@
 	그 xml문서와 아래와 같이 연결하여 사용한다.
 	형식) <sqlMap resource="경로명/파일명.xml"/>
 	-->
-<!-- 	<sqlMap resource="kr/or/ddit/basic/member.xml"/> -->
 	<sqlMap resource="kr/or/ddit/sqlmap/member.xml" />
+	<sqlMap resource="kr/or/ddit/sqlmap/atchFile.xml" />
 </sqlMapConfig>
 
 

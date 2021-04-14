@@ -37,7 +37,7 @@
 		</selectKey>
 		
 		insert into atch_file
-		(atch_file_id
+		(atch_file_id,
 		 creat_dt,
 		 use_at
 		)
