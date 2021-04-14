@@ -37,7 +37,7 @@
 		</tr>
 		<tr>
 			<td>주 소:</td>
-			<td><%=memVO.getMemAddr() %></td>
+			<td><%=memAddr %></td>
 		</tr>
 		<tr>
 			<td>첨부파일</td>
